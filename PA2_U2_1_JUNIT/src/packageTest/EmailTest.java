@@ -1,20 +1,36 @@
 package packageTest;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import frgp.utn.edu.ar.entidad.Email;
 
 class EmailTest {
+	
+	private String correo; 
+	private Email email; 
+	
+	
+	@BeforeEach
+	public void beforeEachTest() {
 
+	}
+	
+	@AfterEach
+	public void afterEachTest() {
+		
+	}
 	// Métodos de prueba para validar correo con letra mayúscula
 	@Test
 	public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
-		
-		String correo = "ejemPlo@gmail.com"; // Ejemplo
-		Email email = new Email(correo); 
-		
+		correo = "EjemPlo1@gmail.com"; 
+		email = new Email(correo); 
 		boolean res = Email.validarCorreo(email.toString());
 		
 		assertTrue(res); // Verifica que el resultado sea verdadero
@@ -22,7 +38,7 @@ class EmailTest {
 	
 	@Test
 	public void testValidarCorreo_sinLetraMayuscula_retornaFalse() {
-		
+
 	}
 	
 	
@@ -35,5 +51,20 @@ class EmailTest {
 	@Test
 	public void testValidarCorreo_sinLetraMinuscula_retornaFalse() {
 		
+	}
+	
+	@Test
+	public void testValidarCorreo_alMenosUnNumero_retornaTrue() {
+		correo = "EjemPlo1@gmail.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		assertTrue(res); 
+	}
+	@Test
+	public void testValidarCorreo_alMenosUnNumero_retornaFalse() {
+		correo = "EjemPlo@gmail.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		assertFalse(res); 
 	}
 }
