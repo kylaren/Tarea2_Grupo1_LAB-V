@@ -67,4 +67,47 @@ class EmailTest {
 		boolean res = Email.validarCorreo(email.toString());
 		assertFalse(res); 
 	}
+	
+	//Ocho digitos
+	
+    @Test
+    public void testValidarCorreo_Al_Menos_8_Digitos_retortnaTrue() {
+    	
+    	correo = "12345678@correo.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		
+		assertTrue(res); 
+    }
+    
+    @Test
+    public void testValidarCorreo_Al_Menos_8_Digitos_retortnaFalse() {
+    	
+    	correo = "1234567@correo.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		
+		assertFalse(res); 
+    }
+    
+    @Test
+    public void testValidarCorreo_Mas_De_8_Digitos_retortnaTrue() {
+    	
+    	correo = "1234567891011@correo.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		
+		assertTrue(res); 
+    }
+    
+    @Test
+    public void testValidarCorreo_Sin_Digitos_retortnaFalse() {
+    	
+    	correo = ""; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		
+		assertFalse(res); 
+    }
+    
 }
