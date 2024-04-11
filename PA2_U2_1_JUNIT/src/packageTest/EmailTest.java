@@ -69,43 +69,28 @@ class EmailTest {
 	//Ocho digitos
 	
     @Test
-    public void testValidarCorreo_Al_Menos_8_Digitos_retornaTrue() {
+    public void testValidarCorreo_Mas_8_Digitos_retornaTrue() {
     	
-    	/*correo = "12345678@correo.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());*/
-		
-		assertTrue(Email.validarCorreo("12345678@correo.com")); 
-    }
-    
-    
+		assertTrue(Email.validarCorreo("Cero123456@correo.com")); 
+    }   
+         
     @Test
-    public void testValidarCorreo_Mas_De_8_Digitos_retornaTrue() {
-    	
-    	/*correo = "1234567891011@correo.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());*/
-		
-		assertTrue(Email.validarCorreo("1234567891011@correo.com")); 
-    }
-    
-    @Test
-    public void testValidarCorreo_Al_Menos_8_Digitos_retornaFalse() {
-    	
-    	/*correo = "1234567@correo.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());*/
-    	
-    	assertFalse(Email.validarCorreo("1234567@correo.com")); 
-    }
-    @Test
-    public void testValidarCorreo_Sin_Digitos_retornaFalse() {
-    	
-    	/*correo = ""; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());*/
+    public void testValidarCorreo_Vacio_retornaFalse() {   	
 		
 		assertFalse(Email.validarCorreo("")); 
     }
+        
+    @Test
+    public void testValidarCorreo_8_Exactos_retornaTrue() {
+    	
+		assertTrue(Email.validarCorreo("1@Ab.com")); 
+    }
+    
+    @Test
+    public void testValidarCorreo_8_Exactos_retornaFalse() {
+    	
+		assertFalse(Email.validarCorreo("1@ab.com")); 
+    }
+    
     
 }
