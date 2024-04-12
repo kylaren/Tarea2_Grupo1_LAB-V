@@ -2,9 +2,7 @@ package packageTest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
-
 import frgp.utn.edu.ar.entidad.Email;
 
 class EmailTest {
@@ -47,7 +45,7 @@ class EmailTest {
 	}
 	
 	
-	
+	/*Tests al menos un numero */
 	@Test
 	public void testValidarCorreo_alMenosUnNumero_retornaTrue() {
 		/*correo = "EjemPlo1@gmail.com"; 
@@ -66,7 +64,7 @@ class EmailTest {
 		
 	}
 	
-	//Ocho digitos
+	/*Tests ocho digitos */
 	
     @Test
     public void testValidarCorreo_Mas_8_Digitos_retornaTrue() {
@@ -92,5 +90,23 @@ class EmailTest {
 		assertFalse(Email.validarCorreo("1@ab.com")); 
     }
     
+    /* Validar mail alfanumerico */
+    @Test
+    public void testValidarCorreo_un_caracter_alfanumerico_retornaTrue() {
+        String correoValido = "Mail123@mail.com";
+        assertTrue(Email.validarCorreo(correoValido));
+    }
+    
+    @Test
+    public void testValidarCorreo_un_caracter_alfanumerico_retornaFalse() {
+        String correoInvalido = "Mail@mail.com";
+        assertFalse(Email.validarCorreo(correoInvalido));
+    }
+    
+    @Test
+    public void testValidarCorreo_un_caracter_alfanumerico_minusculas_retornaFrue() {
+        String correoInvalido = "mail123@mail.com";
+        assertFalse(Email.validarCorreo(correoInvalido));
+    }
     
 }
