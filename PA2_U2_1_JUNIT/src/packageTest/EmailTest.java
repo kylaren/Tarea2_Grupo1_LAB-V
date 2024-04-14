@@ -8,15 +8,17 @@ import frgp.utn.edu.ar.entidad.Email;
 class EmailTest {
 	
 	
-	// Métodos de prueba para validar correo con letra mayúscula
+	// Método de prueba para validar correo que con letra mayúscula es valido
 	@Test
 	public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
-		/*correo = "EjemPlo1@gmail.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());		
-		assertTrue(res);*/
 		
 		assertTrue(Email.validarCorreo("EjemPlo1@gmail.com"));
+	}
+	
+	// Metodo de prueba para validar correo que sin letra mayuscula es invalido
+	@Test
+	public void testValidarCorreo_sinLetraMayuscula_retornaFalse() {
+		assertFalse(Email.validarCorreo("ejemplo1@gmail.com"));
 	}
 	
 	@Test
@@ -108,5 +110,6 @@ class EmailTest {
         String correoInvalido = "mail123@mail.com";
         assertFalse(Email.validarCorreo(correoInvalido));
     }
+    /*asd*/
     
 }
