@@ -7,7 +7,6 @@ import frgp.utn.edu.ar.entidad.Email;
 
 class EmailTest {
 	
-	
 	// Método de prueba para validar correo que con letra mayúscula es valido
 	@Test
 	public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
@@ -21,6 +20,7 @@ class EmailTest {
 		assertFalse(Email.validarCorreo("ejemplo1@gmail.com"));
 	}
 	
+	/*** Ocho dígitos ***/
 	@Test
 	public void testValidarCorreo_MasDeOchoDigitos_ConNumero_TodasMinusculas() {
 		assertFalse(Email.validarCorreo("ejemplo2@gmail.com"));
@@ -46,27 +46,11 @@ class EmailTest {
 		assertFalse(Email.validarCorreo("EJ@MAIL"));
 	}
 	
-	
-	/*Tests al menos un numero */
 	@Test
-	public void testValidarCorreo_alMenosUnNumero_retornaTrue() {
-		/*correo = "EjemPlo1@gmail.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());
-		assertTrue(res); */
-		assertTrue(Email.validarCorreo("EjemPlo1@gmail.com"));
+	public void testValidarCorreo_menosDe8Caracteres_retornaFalse() {
+		String correoInvalido = "3G@g.es";
+		assertFalse(Email.validarCorreo(correoInvalido));
 	}
-	
-	@Test
-	public void testValidarCorreo_alMenosUnNumero_retornaFalse() {
-		/*correo = "EjemPlo@gmail.com"; 
-		email = new Email(correo); 
-		boolean res = Email.validarCorreo(email.toString());*/
-		assertFalse(Email.validarCorreo("EjemPlo@gmail.com")); 
-		
-	}
-	
-	/*Tests ocho digitos */
 	
     @Test
     public void testValidarCorreo_Mas_8_Digitos_retornaTrue() {
@@ -91,8 +75,27 @@ class EmailTest {
     	
 		assertFalse(Email.validarCorreo("1@ab.com")); 
     }
+	
+	/*Tests al menos un numero */
+	@Test
+	public void testValidarCorreo_alMenosUnNumero_retornaTrue() {
+		/*correo = "EjemPlo1@gmail.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());
+		assertTrue(res); */
+		assertTrue(Email.validarCorreo("EjemPlo1@gmail.com"));
+	}
+	
+	@Test
+	public void testValidarCorreo_alMenosUnNumero_retornaFalse() {
+		/*correo = "EjemPlo@gmail.com"; 
+		email = new Email(correo); 
+		boolean res = Email.validarCorreo(email.toString());*/
+		assertFalse(Email.validarCorreo("EjemPlo@gmail.com")); 
+		
+	}
     
-    /* Validar mail alfanumerico */
+    /*** Validar mail alfanumerico ***/
     @Test
     public void testValidarCorreo_un_caracter_alfanumerico_retornaTrue() {
         String correoValido = "Mail123@mail.com";
@@ -109,7 +112,5 @@ class EmailTest {
     public void testValidarCorreo_un_caracter_alfanumerico_minusculas_retornaFrue() {
         String correoInvalido = "mail123@mail.com";
         assertFalse(Email.validarCorreo(correoInvalido));
-    }
-    /*asd*/
-    
+    }    
 }
