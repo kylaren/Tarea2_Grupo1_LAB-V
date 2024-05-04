@@ -109,8 +109,20 @@ class EmailTest {
     }
     
     @Test
-    public void testValidarCorreo_un_caracter_alfanumerico_minusculas_retornaFrue() {
+    public void testValidarCorreo_un_caracter_alfanumerico_minusculas_retornaFalse() {
         String correoInvalido = "mail123@mail.com";
         assertFalse(Email.validarCorreo(correoInvalido));
-    }    
+    }
+    
+    @Test
+    public void testValidarCorreo_un_caracter_alfanumerico_mayusculas_retornaTrue() {
+        String correoValido = "MAILl123@mail.com";
+        assertTrue(Email.validarCorreo(correoValido));
+    }  
+    
+    @Test
+    public void testValidarCorreo_dos_arroba_retornaTrue() {
+        String correoInvalido = "M@ill123@mail.com";
+        assertTrue(Email.validarCorreo(correoInvalido));
+    } 
 }
